@@ -1,6 +1,8 @@
 package com.abumuhab.pecodetask.notificationpages
 
 import android.app.NotificationManager
+import android.app.PendingIntent
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -47,12 +49,31 @@ class NotificationPageFragment(
         }
 
         binding.createNotificationButton.setOnClickListener {
+            //create the notification channel
             createNotificationChannel(requireContext())
+
+            //setup the notification's tap action
+            val intent = Intent(requireContext(), NotificationPageActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                val bundle = Bundle()
+                bundle.putInt("page", page.number)
+                this.putExtras(bundle)
+            }
+            val pendingIntent = PendingIntent.getActivity(
+                requireContext(),
+                0,
+                intent,
+                PendingIntent.FLAG_UPDATE_CURRENT
+            )
+
+            //build the notification
             val builder = NotificationCompat.Builder(requireContext(), "npc")
                 .setSmallIcon(R.drawable.ic_baseline_message_24)
                 .setContentTitle("Chat heads active")
                 .setContentText("Notification ${page.number}")
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setContentIntent(pendingIntent)
+                .setAutoCancel(true)
             with(NotificationManagerCompat.from(requireContext())) {
                 notify(page.number, builder.build())
             }

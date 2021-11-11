@@ -7,7 +7,6 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.app.NotificationManagerCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
@@ -90,6 +89,20 @@ class NotificationPageActivity : AppCompatActivity() {
                 pager = findViewById(R.id.pager)
                 val pagerAdapter = ScreenSliderPageAdapter(this, viewModel)
                 pager!!.adapter = pagerAdapter
+
+                /**
+                 * Check the activity intent bundle if a page extra is set from a notification click action
+                 * then navigate to specified fragment page
+                 */
+                var page = intent.getIntExtra("page", -1)
+
+                //if page not provided, set to first page
+                if (page < 0) {
+                    page = 0
+                } else {
+                    page--
+                }
+                pager!!.currentItem = page
             }
         }
     }
