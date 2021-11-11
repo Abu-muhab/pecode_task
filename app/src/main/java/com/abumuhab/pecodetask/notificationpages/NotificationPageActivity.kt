@@ -1,4 +1,5 @@
-package com.abumuhab.pecodetask
+package com.abumuhab.pecodetask.notificationpages
+
 
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
@@ -10,11 +11,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
+import com.abumuhab.pecodetask.R
 import com.abumuhab.pecodetask.data.source.NotificationPagesRepository
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class MainActivity : AppCompatActivity() {
+class NotificationPageActivity : AppCompatActivity() {
     private var pager: ViewPager2? = null
     private lateinit var notificationPagesRepository: NotificationPagesRepository
     private lateinit var viewModel: NotificationPagesViewModel

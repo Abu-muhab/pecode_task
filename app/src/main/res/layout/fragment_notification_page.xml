@@ -52,6 +52,7 @@
             app:tint="@color/primaryColor" />
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/createNotificationButton"
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:layout_marginTop="143dp"

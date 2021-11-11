@@ -1,4 +1,4 @@
-package com.abumuhab.pecodetask
+package com.abumuhab.pecodetask.notificationpages
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
+import com.abumuhab.pecodetask.R
 import com.abumuhab.pecodetask.data.NotificationPage
 import com.abumuhab.pecodetask.data.source.NotificationPagesRepository
 import com.abumuhab.pecodetask.databinding.FragmentNotificationPageBinding
@@ -40,6 +41,10 @@ class NotificationPageFragment(
             lifecycleScope.launch {
                 notificationPagesRepository.removePage()
             }
+        }
+
+        binding.createNotificationButton.setOnClickListener {
+
         }
 
 
