@@ -2,9 +2,12 @@ package com.abumuhab.pecodetask.notificationpages
 
 
 import android.annotation.SuppressLint
+import android.app.NotificationManager
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.app.NotificationManagerCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
@@ -66,6 +69,14 @@ class NotificationPageActivity : AppCompatActivity() {
                     delay(200)
                     pager?.adapter?.notifyDataSetChanged()
                 }
+
+                /**
+                 * Remove notification if active for removed fragment
+                 */
+                val notificationManager: NotificationManager =
+                    application.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+                notificationManager.cancel(it.number)
+
             }
         }
 
