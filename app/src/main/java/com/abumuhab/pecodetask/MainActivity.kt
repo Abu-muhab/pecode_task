@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         this.supportActionBar?.hide()
 
         //get a reference to the notificationPages repository
-        notificationPagesRepository = (application as PecodeApplication).pagesRepository
+        notificationPagesRepository = NotificationPagesRepository.getInstance(application)
 
 
         //setup viewModel

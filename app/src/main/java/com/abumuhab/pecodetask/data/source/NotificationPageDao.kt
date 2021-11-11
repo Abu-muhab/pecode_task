@@ -15,5 +15,8 @@ interface NotificationPageDao {
     suspend fun deleteLast()
 
     @Query("SELECT * FROM notification_pages_table")
-    fun getPages(): LiveData<List<NotificationPage>>
+    fun observePages(): LiveData<List<NotificationPage>>
+
+    @Query("SELECT * FROM notification_pages_table")
+    suspend fun getPages(): List<NotificationPage>
 }

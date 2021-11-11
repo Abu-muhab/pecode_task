@@ -28,8 +28,7 @@ class NotificationPageFragment(
         )
 
         //get a reference to the notificationPages repository
-        notificationPagesRepository =
-            (requireActivity().application as PecodeApplication).pagesRepository
+        notificationPagesRepository = NotificationPagesRepository.getInstance(requireContext())
 
         binding.addButton.setOnClickListener {
             lifecycleScope.launch {
